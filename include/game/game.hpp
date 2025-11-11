@@ -29,12 +29,23 @@ class Hand {
 
 class BlackjackGame {
     public:
+    // Construct game and ensure hands are created with correct isDealer flags
+    // playerHand will be initialized with isDealer = false
+    // dealerHand will be initialized with isDealer = true
+    BlackjackGame(GameState _turn = GameState::InitialDeal);
         Deck deck;
         Hand playerHand;
         Hand dealerHand;
         GameState turn;
 
+        void startNewGame();
+        void playGame();
+
     private:
+        void determineWinner();
+        void move(Hand hand);
+        void showTurnOptions();
+        int getTurnChoice();
 };
 
 #endif
